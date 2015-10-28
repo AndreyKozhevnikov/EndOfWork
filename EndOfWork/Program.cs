@@ -72,7 +72,7 @@ namespace EndOfWork {
 
         private void BackupSQL() {
             Console.WriteLine("--------");
-            string deployPath = @"D:\Dropbox\Deploy\BackupSQL\BackupSql.exe";
+            string deployPath = @"D:\Dropbox\Deploy\BackupSQLDeploy\BackupSql.exe";
             Process proc = Process.Start(deployPath,"-b");
             Console.WriteLine("Backup complete");
         }
