@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,8 +24,11 @@ namespace EndOfWork {
         public WorkFlow() {
             ClearWorkFolders();
             ReplaceTickets();
+            BackupSQL();
+
             Console.ReadLine();
         }
+
         void ClearWorkFolders() {
             List<string> listWorkFolder = new List<string>();
             listWorkFolder.Add(@"d:\temp");
@@ -63,6 +67,14 @@ namespace EndOfWork {
                     }
                 }
             }
+        }
+
+
+        private void BackupSQL() {
+            Console.WriteLine("--------");
+            string deployPath = @"D:\Dropbox\Deploy\BackupSQL\BackupSql.exe";
+            Process proc = Process.Start(deployPath,"-b");
+            Console.WriteLine("Backup complete");
         }
         
     }
