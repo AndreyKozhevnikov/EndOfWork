@@ -32,9 +32,14 @@ namespace EndOfWork {
             listWorkFolder.Add(@"C:\Users\kozhevnikov.andrey\Downloads");
 
             foreach (string fold in listWorkFolder) {
-                Directory.Delete(fold, true);
-                Directory.CreateDirectory(fold);
-                Console.WriteLine(string.Format("{0} clear",fold));
+                try {
+                    Directory.Delete(fold, true);
+                    Directory.CreateDirectory(fold);
+                    Console.WriteLine(string.Format("{0} clear", fold));
+                }
+                catch {
+                    Console.WriteLine(string.Format("!error {0}", fold));
+                }
             }
             Console.WriteLine();
         }
