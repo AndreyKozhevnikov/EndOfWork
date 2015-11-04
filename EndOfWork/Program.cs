@@ -11,7 +11,6 @@ namespace EndOfWork {
         static void Main(string[] args) {
 
             WorkFlow f = new WorkFlow();
-
         }
 
 
@@ -38,11 +37,15 @@ namespace EndOfWork {
             foreach (string fold in listWorkFolder) {
                 try {
                     Directory.Delete(fold, true);
+                    Console.WriteLine(string.Format("{0} deleted", fold));
                     Directory.CreateDirectory(fold);
+                    Console.WriteLine(string.Format("{0} created", fold));
                     Console.WriteLine(string.Format("{0} clear", fold));
                 }
                 catch {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine(string.Format("!error {0}", fold));
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
             }
             Console.WriteLine();
