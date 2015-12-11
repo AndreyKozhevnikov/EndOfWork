@@ -11,7 +11,7 @@ namespace EndOfWork {
     class Program {
         static void Main(string[] args) {
             bool isWithBackup = true;
-            if (args != null && args[0] == "-b") {
+            if (args.Count()>0 && args[0] == "-b") {
                 isWithBackup = false;
             }
 
@@ -84,7 +84,11 @@ namespace EndOfWork {
         private void BackupSQL() {
             Console.WriteLine("--------");
             string deployPath = @"D:\Dropbox\Deploy\BackupSQLDeploy\BackupSql.exe";
-            Process proc = Process.Start(deployPath, "-b");
+            Process proc = new Process();
+            proc.StartInfo.FileName = deployPath;
+            proc.StartInfo.Arguments = "-b";
+            proc.Start();
+            proc.WaitForExit();
             Console.WriteLine("Backup complete");
         }
 
