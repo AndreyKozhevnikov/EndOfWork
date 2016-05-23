@@ -38,8 +38,8 @@ namespace EndOfWork {
 
         void ClearWorkFolders() {
             List<string> listWorkFolder = new List<string>();
-            listWorkFolder.Add(@"d:\temp");
-            listWorkFolder.Add(@"d:\!Tickets\!Test");
+            listWorkFolder.Add(@"c:\temp");
+            listWorkFolder.Add(@"c:\!Tickets\!Test");
 
             foreach (string fold in listWorkFolder) {
                 try {
@@ -58,8 +58,8 @@ namespace EndOfWork {
         }
 
         void ReplaceTickets() {
-            string ticketsFolder = @"d:\!Tickets\";
-            string solvedFolder = @"d:\!Tickets\!Solved\";
+            string ticketsFolder = @"c:\!Tickets\";
+            string solvedFolder = @"c:\!Tickets\!Solved\";
 
             var allDirectories = Directory.GetDirectories(ticketsFolder).ToList();
             foreach (string dir in allDirectories) {
@@ -83,7 +83,7 @@ namespace EndOfWork {
 
         private void BackupSQL() {
             Console.WriteLine("--------");
-            string deployPath = @"D:\Dropbox\Deploy\BackupSQLDeploy\BackupSql.exe";
+            string deployPath = @"c:\Dropbox\Deploy\BackupSQLDeploy\BackupSql.exe";
             Process proc = new Process();
             proc.StartInfo.FileName = deployPath;
             proc.StartInfo.Arguments = "-b";
