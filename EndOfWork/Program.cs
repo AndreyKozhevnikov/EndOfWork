@@ -60,12 +60,20 @@ namespace EndOfWork {
         void ReplaceTickets() {
             string ticketsFolder = @"c:\!Tickets\";
             string solvedFolder = @"c:\!Tickets\!Solved\";
-
             var allDirectories = Directory.GetDirectories(ticketsFolder).ToList();
             foreach (string dir in allDirectories) {
                 DirectoryInfo di = new DirectoryInfo(dir);
                 var nm = di.Name;
                 if (nm[0] != '!') {
+                    var binDirs = Directory.GetDirectories(dir, "bin", SearchOption.AllDirectories);
+                    var objDirs = Directory.GetDirectories(dir, "obj", SearchOption.AllDirectories);
+                    var res = objDirs.Concat(binDirs).ToList();
+                    if (res.Count > 0) {
+                        foreach (var d in res) {
+                            Directory.Delete(d, true);
+                        }
+                    }
+
                     string fullTargetName = solvedFolder + di.Name;
                     try {
                         Directory.Move(dir, fullTargetName);
